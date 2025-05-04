@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.mvvm2.model.User
 
 @Composable
-fun allUser(listUser : List<User>) {
+fun allUser(listUser: List<User>) {
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(10.dp)
@@ -30,16 +30,15 @@ fun allUser(listUser : List<User>) {
                     .padding(vertical = 20.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
-            )
-            {
+            ) {
                 Text("Priyanza Rahmat Pambudi", style = MaterialTheme.typography.headlineMedium)
                 Text("225150707111044", style = MaterialTheme.typography.headlineMedium)
                 Text("Daftar Pengguna", style = MaterialTheme.typography.headlineMedium)
             }
-
         }
-        items(listUser){
-            user -> userCard(user.id,user.name,user.email)
+
+        items(listUser) { user ->
+            userCard(user)
         }
     }
 }

@@ -10,9 +10,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.mvvm2.R
+import com.example.mvvm2.model.User
 
 @Composable
-fun userCard(id: Int, name: String, email: String) {
+fun userCard(user: User) {
     Card(
         modifier = Modifier
             .padding(10.dp)
@@ -24,19 +25,26 @@ fun userCard(id: Int, name: String, email: String) {
             containerColor = MaterialTheme.colorScheme.surfaceVariant
         )
     ) {
-        Row(modifier = Modifier.padding(10.dp)) {
+        Row {
             Image(
                 painter = painterResource(R.drawable.profile_picture),
-                contentDescription = "Profile Picture",
+                contentDescription = "profile",
                 modifier = Modifier
                     .size(80.dp)
                     .clip(CircleShape)
             )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
-                Text(text = "ID: $id", style = MaterialTheme.typography.bodyLarge)
-                Text(text = name, style = MaterialTheme.typography.bodyLarge)
-                Text(text = email, style = MaterialTheme.typography.bodyLarge)
+            Column(Modifier.padding(10.dp)) {
+                Text(text = "ID: ${user.id}", style = MaterialTheme.typography.bodyLarge)
+                Text(text = "Name: ${user.name}", style = MaterialTheme.typography.bodyLarge)
+                Text(text = "Username: ${user.username}", style = MaterialTheme.typography.bodyLarge)
+                Text(text = "Email: ${user.email}", style = MaterialTheme.typography.bodyLarge)
+                Text(text = "Phone: ${user.phone}", style = MaterialTheme.typography.bodyLarge)
+                Text(text = "Website: ${user.website}", style = MaterialTheme.typography.bodyLarge)
+                Text(text = "Address: ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}", style = MaterialTheme.typography.bodyMedium)
+                Text(text = "Geo: (${user.address.geo.lat}, ${user.address.geo.lng})", style = MaterialTheme.typography.bodySmall)
+                Text(text = "Company: ${user.company.name}", style = MaterialTheme.typography.bodyMedium)
+                Text(text = "CatchPhrase: ${user.company.catchPhrase}", style = MaterialTheme.typography.bodySmall)
+                Text(text = "Business: ${user.company.bs}", style = MaterialTheme.typography.bodySmall)
             }
         }
     }
