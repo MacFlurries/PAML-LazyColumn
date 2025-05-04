@@ -1,8 +1,8 @@
 package com.example.mvvm2.view
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -23,17 +23,20 @@ fun allUser(listUser : List<User>) {
         contentPadding = PaddingValues(10.dp)
     ) {
         item {
-            Row(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .padding(vertical = 20.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             )
             {
+                Text("Priyanza Rahmat Pambudi", style = MaterialTheme.typography.headlineMedium)
+                Text("225150707111044", style = MaterialTheme.typography.headlineMedium)
                 Text("Daftar Pengguna", style = MaterialTheme.typography.headlineMedium)
             }
+
         }
         items(listUser){
             user -> userCard(user.id,user.name,user.email)
