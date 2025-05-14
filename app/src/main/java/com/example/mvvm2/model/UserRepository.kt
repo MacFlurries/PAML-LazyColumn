@@ -11,4 +11,5 @@ class UserRepository {
         .create(ApiService::class.java)
 
     suspend fun fetchUsers() = api.getUsers()
+    suspend fun fetchUserById(id: Int) = api.getUserById(id)
 }

@@ -17,7 +17,10 @@ import androidx.compose.ui.unit.dp
 import com.example.mvvm2.model.User
 
 @Composable
-fun allUser(listUser: List<User>) {
+fun allUser(
+    listUser: List<User>,
+    onUserClick: (Int) -> Unit
+) {
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(10.dp)
@@ -38,7 +41,7 @@ fun allUser(listUser: List<User>) {
         }
 
         items(listUser) { user ->
-            userCard(user)
+            userCard(user = user, onClick = { onUserClick(user.id) })
         }
     }
 }

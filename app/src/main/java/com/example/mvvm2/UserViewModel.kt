@@ -14,13 +14,18 @@ class UserViewModel : ViewModel() {
     private val _users = MutableStateFlow<List<User>>(emptyList())
     val users: StateFlow<List<User>> = _users
 
-    init {
+    private val _selectedUser = MutableStateFlow<User?>(null)
+    val selectedUser: StateFlow<User?> = _selectedUser
+
+    fun loadUsers() {
         viewModelScope.launch {
-            try {
-                _users.value = repository.fetchUsers()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            _users.value = repository.fetchUsers()
+        }
+    }
+
+    fun fetchUserDetail(id: Int) {
+        viewModelScope.launch {
+            _selectedUser.value = repository.fetchUserById(id)
         }
     }
 }
